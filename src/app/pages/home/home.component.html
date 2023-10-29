@@ -1,0 +1,85 @@
+<div class="container">
+    <div class="content">
+        <div class="product-list-content">
+            <div class="filters">
+                <ul class="categories">
+                    <li>
+                        <a class="active" [routerLink]="['/home']">
+                            TODOS OS PRODUTOS
+                        </a>
+                    </li>
+                    <li>
+                        <a class="" [routerLink]="['/home']" [queryParams]="{ category: 't-shirts' }">
+                            CAMISETAS
+                        </a>
+                    </li>
+                    <li>
+                        <a class="" [routerLink]="['/home']" [queryParams]="{ category: 'mugs'}">
+                            CANECAS
+                        </a>
+                    </li>
+                </ul>
+                <div class="categories-mobile">
+                    <button type="button">
+                        CATEGORIAS
+                        <img src="assets/arrow.svg">
+                    </button>
+                    <div class="">
+                        <div class="block-touch"></div>
+                        <ul>
+                            <li>
+                                <a class="" [routerLink]="['/home']">
+                                    TODOS OS PRODUTOS
+                                </a>
+                            </li>
+                            <li>
+                                <a class="" [routerLink]="['/home']" [queryParams]="{ category: 't-shirts' }">
+                                    CAMISETAS
+                                </a>
+                            </li>
+                            <li>
+                                <a class="" [routerLink]="['/home']" [queryParams]="{ category: 'mugs'}">
+                                    CANECAS
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="orderby">
+                    <button type="button">
+                        Organizar por
+                        <img src="assets/arrow.svg">
+                    </button>
+                    <div class="active">
+                        <div class="block-touch"></div>
+                        <ul>
+                            <li><a href="#">Novidades</a></li>
+                            <li><a href="#">Preço: Menor - maior</a></li>
+                            <li><a href="#">Preço: Maior - menor</a></li>
+                            <li><a href="#">Mais vendidos</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <app-pagination [pageParam]="toInt(pageParam)" [totalCount]="totalCount" *ngIf="products.length > 0" />
+            <div class="product-list">
+                <app-product-item *ngFor="let product of products; let i = index"
+                    [product]="product"></app-product-item>
+            </div>
+            <app-pagination [pageParam]="toInt(pageParam)" [totalCount]="totalCount" *ngIf="products.length > 0" />
+
+            <div class="empty-list" *ngIf="products.length === 0">
+                <div class="empty-list-icon">
+                    <img src="assets/sadFace.svg">
+                </div>
+                <div class="empty-list-message">
+                    <p>Nenhum produto encontrado para este filtro</p>
+                </div>
+                <div class="empty-list-button">
+                    <a href="/">Remover filtro</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

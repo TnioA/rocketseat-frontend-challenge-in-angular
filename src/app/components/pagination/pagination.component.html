@@ -1,0 +1,21 @@
+<ul class="pagination">
+    <li *ngFor="let page of paginationItems(); let i = index">
+        <button 
+            [ngClass]="" 
+            type="button" 
+            (click)="paginate((page + 1).toString())"
+        >
+            {{page + 1}}
+        </button>
+    </li>
+    <li>
+        <button class="pagination-item previous" type="button" (click)="paginate((pageParam - 1).toString())">
+            <img class="left" src="assets/arrow.svg">
+        </button>
+    </li>
+    <li>
+        <button class="pagination-item next" type="button" (click)="paginate((pageParam + 1).toString())">
+            <img class="right" src="assets/arrow.svg">
+        </button>
+    </li>
+</ul>

@@ -1,0 +1,22 @@
+<header class="header">
+    <div class="content">
+        <div class="logo">
+            <a [routerLink]="['/']" href=>capputeeno</a>
+        </div>
+        <div class="header-buttons">
+            <div class="input-icon">
+                <input class="search-input" ref={inputReference} type="text"
+                    placeholder="Procurando por algo específico?" />
+                <button type="button">
+                    <img src="assets/search.svg">
+                </button>
+            </div>
+            <div class="btn-cart">
+                <a [routerLink]="['/cart']">
+                    <img src="assets/shopping-bag.svg">
+                    <span class="cart-badge">0</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
