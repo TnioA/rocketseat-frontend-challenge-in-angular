@@ -49,10 +49,3 @@
     background: #F5F5FA;
     border: 1px solid #FFA585;
 }
-
-.product-list {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    /* gap: 32px; */
-}

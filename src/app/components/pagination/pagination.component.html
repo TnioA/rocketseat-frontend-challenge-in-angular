@@ -1,7 +1,8 @@
 <ul class="pagination">
     <li *ngFor="let page of paginationItems(); let i = index">
         <button 
-            [ngClass]="" 
+            className="pagination-item"
+            [class.active]="pageParam === (page + 1) || (!pageParam && (page + 1) === 1)"
             type="button" 
             (click)="paginate((page + 1).toString())"
         >

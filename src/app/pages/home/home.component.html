@@ -4,41 +4,41 @@
             <div class="filters">
                 <ul class="categories">
                     <li>
-                        <a class="active" [routerLink]="['/home']">
+                        <a [class.active]="!categoryParam" [routerLink]="['/home']">
                             TODOS OS PRODUTOS
                         </a>
                     </li>
                     <li>
-                        <a class="" [routerLink]="['/home']" [queryParams]="{ category: 't-shirts' }">
+                        <a [class.active]="categoryParam == 't-shirts'" [routerLink]="['/home']" [queryParams]="{ category: 't-shirts' }">
                             CAMISETAS
                         </a>
                     </li>
                     <li>
-                        <a class="" [routerLink]="['/home']" [queryParams]="{ category: 'mugs'}">
+                        <a [class.active]="categoryParam == 'mugs'" [routerLink]="['/home']" [queryParams]="{ category: 'mugs'}">
                             CANECAS
                         </a>
                     </li>
                 </ul>
                 <div class="categories-mobile">
-                    <button type="button">
+                    <button type="button" (click)="categoriesDrop = true">
                         CATEGORIAS
                         <img src="assets/arrow.svg">
                     </button>
-                    <div class="">
-                        <div class="block-touch"></div>
+                    <div class="dropdown" [ngClass]="{active: categoriesDrop}">
+                        <div class="block-touch" (click)="categoriesDrop = false"></div>
                         <ul>
                             <li>
-                                <a class="" [routerLink]="['/home']">
+                                <a [class.active]="!categoryParam" [routerLink]="['/home']">
                                     TODOS OS PRODUTOS
                                 </a>
                             </li>
                             <li>
-                                <a class="" [routerLink]="['/home']" [queryParams]="{ category: 't-shirts' }">
+                                <a [class.active]="categoryParam == 't-shirts'" [routerLink]="['/home']" [queryParams]="{ category: 't-shirts' }">
                                     CAMISETAS
                                 </a>
                             </li>
                             <li>
-                                <a class="" [routerLink]="['/home']" [queryParams]="{ category: 'mugs'}">
+                                <a [class.active]="categoryParam == 'mugs'" [routerLink]="['/home']" [queryParams]="{ category: 'mugs'}">
                                     CANECAS
                                 </a>
                             </li>
@@ -46,17 +46,17 @@
                     </div>
                 </div>
                 <div class="orderby">
-                    <button type="button">
+                    <button type="button" (click)="orderByDrop = true">
                         Organizar por
                         <img src="assets/arrow.svg">
                     </button>
-                    <div class="active">
-                        <div class="block-touch"></div>
+                    <div class="dropdown" [ngClass]="{active: orderByDrop}">
+                        <div class="block-touch" (click)="orderByDrop = false"></div>
                         <ul>
-                            <li><a href="#">Novidades</a></li>
-                            <li><a href="#">Preço: Menor - maior</a></li>
-                            <li><a href="#">Preço: Maior - menor</a></li>
-                            <li><a href="#">Mais vendidos</a></li>
+                            <li><a [routerLink]="['/']">Novidades</a></li>
+                            <li><a [routerLink]="['/']">Preço: Menor - maior</a></li>
+                            <li><a [routerLink]="['/']">Preço: Maior - menor</a></li>
+                            <li><a [routerLink]="['/']">Mais vendidos</a></li>
                         </ul>
                     </div>
                 </div>
@@ -64,8 +64,10 @@
 
             <app-pagination [pageParam]="toInt(pageParam)" [totalCount]="totalCount" *ngIf="products.length > 0" />
             <div class="product-list">
-                <app-product-item *ngFor="let product of products; let i = index"
-                    [product]="product"></app-product-item>
+                <app-product-item class="product-item"
+                    *ngFor="let product of products; let i = index" 
+                    [product]="product">
+                </app-product-item>
             </div>
             <app-pagination [pageParam]="toInt(pageParam)" [totalCount]="totalCount" *ngIf="products.length > 0" />
 

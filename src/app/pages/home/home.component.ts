@@ -11,6 +11,9 @@ import { ApiService } from 'src/app/services/api.service';
 export class HomeComponent implements OnInit {
   private PRODUCT_LIMIT_FOR_PAGE = 8;
 
+  public categoriesDrop: boolean = false;
+  public orderByDrop: boolean = false;
+
   public categoryParam!: string;
   public nameParam!: string;
   public pageParam!: string;

@@ -1,18 +1,13 @@
-.product-item {
-    width: 25%;
-    padding: 15px;
-}
-
-.product-item a {
+a {
     text-decoration: none;
 }
 
-.product-item .product-image {
+.product-image {
     display: flex;
     border-radius: 8px 8px 0 0;
 }
 
-.product-item .product-image img {
+.product-image img {
     width: 100%;
     border-radius: 8px 8px 0 0;
 }
@@ -45,10 +40,4 @@
     font-size: 14px;
     line-height: 21px;
     color: #09090A;
-}
-
-@media (max-width: 750px) {
-    .product-item {
-        width: 50%;
-    }
 }

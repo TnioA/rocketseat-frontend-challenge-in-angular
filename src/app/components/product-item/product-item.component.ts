@@ -10,7 +10,7 @@ import { convertPrice } from 'src/app/utils/convertPrice';
 export class ProductItemComponent {
   @Input() product!: ProductModel;
 
-  convertPrice(price: number) {
+  convertPriceHandler(price: number) {
     return convertPrice(price);
   }
 }

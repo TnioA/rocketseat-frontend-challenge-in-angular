@@ -5,9 +5,9 @@
         </div>
         <div class="header-buttons">
             <div class="input-icon">
-                <input class="search-input" ref={inputReference} type="text"
-                    placeholder="Procurando por algo específico?" />
-                <button type="button">
+                <input class="search-input" type="text" placeholder="Procurando por algo específico?"
+                    [(ngModel)]="searchValue" />
+                <button type="button" (click)="handleSearch()">
                     <img src="assets/search.svg">
                 </button>
             </div>

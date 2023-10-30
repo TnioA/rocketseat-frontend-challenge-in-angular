@@ -1,1 +1,31 @@
-<p>product works!</p>
+<div class="container">
+    <div class="content">
+        <div class="product-details">
+            <app-back-button />
+            <div class="details-content" *ngIf="product">
+                <div class="product-details-image">
+                    <img src="{{product.image_url}}" alt="" />
+                </div>
+                <div class="product-details-info">
+                    <div class="details-top-info">
+                        <p class="product-category">{{convertCategoryHandler(product.category)}}</p>
+                        <h3 class="product-name">{{product.name}}</h3>
+                        <p class="product-price">{{convertPriceHandler(product.price)}}</p>
+                        <p class="shipping-message">*Frete de R$40,00 para todo o Brasil. Grátis para compras acima
+                            de R$900,00.</p>
+                        <div class="product-description">
+                            <p class="product-description-title">DESCRIÇÃO</p>
+                            <p class="product-description-content">{{product.description}}</p>
+                        </div>
+                    </div>
+                    <div class="details-bottom-info">
+                        <button type="button" (click)="handleAddProduct()">
+                            <img src="/assets/shopping-bag.svg">
+                            ADICIONAR NO CARRINHO
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
