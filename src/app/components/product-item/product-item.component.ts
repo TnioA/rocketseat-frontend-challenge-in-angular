@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { ProductModel } from 'src/app/models/product';
-import { convertPrice } from 'src/app/utils/convertPrice';
 
 @Component({
   selector: 'app-product-item',
@@ -9,8 +8,4 @@ import { convertPrice } from 'src/app/utils/convertPrice';
 })
 export class ProductItemComponent {
   @Input() product!: ProductModel;
-
-  convertPriceHandler(price: number) {
-    return convertPrice(price);
-  }
 }

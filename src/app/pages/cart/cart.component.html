@@ -1,1 +1,90 @@
-<p>cart works!</p>
+<div class="container">
+    <div class="content">
+        <div class="cart">
+            <app-back-button />
+            <div class="cart-content" *ngIf="cartProducts.length > 0">
+                <div class="cart-products">
+                    <div class="cart-products-top">
+                        <h3>SEU CARRINHO</h3>
+                        <p>Total {{cartValues[0]}} produtos <strong>{{cartValues[1] | currency}}</strong></p>
+                    </div>
+                    <div class="cart-product-list" *ngFor="let product of cartProducts">
+                        <div class="cart-product" key={product.id}>
+                            <div class="cart-product-image">
+                                <img src="{{product.image_url}}" alt="" />
+                            </div>
+                            <div class="cart-product-info">
+                                <div class="cart-product-header">
+                                    <h3>{{product.name}}</h3>
+                                    <button type="button" (click)="removeProduct(product.id)">
+                                        <img src="assets/trash.svg">
+                                    </button>
+                                </div>
+                                <p class="cart-product-description">{{product.description}}</p>
+                                <div class="cart-product-bottom">
+                                    <select 
+                                        id="cart-product-count"
+                                        name="cart-product-count" 
+                                        value={{product.count}}
+                                        #device
+                                        (change)="updateProductCount(product.id, device.value)"
+                                    >
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                    <p>{{(product.price * product.count) | currency}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cart-resume">
+                    <div class="cart-resume-info">
+                        <div class="resume-top-info">
+                            <h3>RESUMO DO PEDIDO</h3>
+                            <div class="resume-values">
+                                <div class="resume-line">
+                                    <p>Subtotal de produtos</p>
+                                    <p>{{cartValues[1] | currency}}</p>
+                                </div>
+                                <div class="resume-line">
+                                    <p>Entrega</p>
+                                    <p>{{40 | currency}}</p>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="total-value">
+                                <p>Total</p>
+                                <p>{{(cartValues[1] + 40) | currency}}</p>
+                            </div>
+                            <button type="button">FINALIZAR COMPRA</button>
+                        </div>
+                        <div class="resume-bottom-info">
+                            <ul class="helpers">
+                                <li><a href="#">AJUDA</a></li>
+                                <li><a href="#">REEMBOLSOS</a></li>
+                                <li><a href="#">ENTREGAS E FRETE</a></li>
+                                <li><a href="#">TROCAS E DEVOLUÇÕES</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="empty-list" *ngIf="cartProducts.length === 0">
+                <div class="empty-list-icon">
+                    <img src="assets/emptyCart.svg">
+                </div>
+                <div class="empty-list-message">
+                    <p>Seu carrinho está vazio</p>
+                </div>
+                <div class="empty-list-button">
+                    <a [routerLink]="['/home']">Voltar para o início</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductModel } from 'src/app/models/product';
 import { ApiService } from 'src/app/services/api.service';
+import { CartService } from 'src/app/services/cart.service';
 import { convertCategory } from 'src/app/utils/convertCategory';
-import { convertPrice } from 'src/app/utils/convertPrice';
 
 @Component({
   selector: 'app-product',
@@ -12,9 +12,12 @@ import { convertPrice } from 'src/app/utils/convertPrice';
 })
 export class ProductComponent implements OnInit {
   public product!: ProductModel;
-  constructor(private route: ActivatedRoute, private apiService: ApiService) {
-
-  }
+  constructor(
+    private route: ActivatedRoute, 
+    private apiService: ApiService, 
+    private cartService: CartService,
+    private router: Router
+  ) { }
 
   async ngOnInit() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
@@ -25,15 +28,13 @@ export class ProductComponent implements OnInit {
     this.product = result.data;
   }
 
-  convertPriceHandler(price: number) {
-    return convertPrice(price);
-  }
-
   convertCategoryHandler(category: string) {
     return convertCategory(category);
   }
 
   handleAddProduct() {
-
+    this.product.count = 1;
+    this.cartService.add(this.product);
+    this.router.navigate(["cart"]);
   }
 }
