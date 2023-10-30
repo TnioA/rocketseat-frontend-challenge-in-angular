@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -8,13 +9,20 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 })
 export class HeaderComponent {
   public searchValue!: string;
-  constructor(private router: Router) {
+  public totalCartProducts: number = 0;
 
+  constructor(private router: Router, public cartService: CartService) {
+    this.updateTotalCartProducts();
   }
+
   handleSearch() {
     if (!this.searchValue)
       return;
 
     this.router.navigate(['home'], { queryParams: { name: this.searchValue } });
+  }
+
+  updateTotalCartProducts() {
+    // this.totalCartProducts = this.cartService.getTotalInfoCart()[0];
   }
 }

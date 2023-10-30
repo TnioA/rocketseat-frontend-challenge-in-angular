@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ProductModel } from '../models/product';
 
+
 @Injectable({
     providedIn: 'root'
 })
@@ -13,7 +14,6 @@ export class CartService {
     }
 
     updateInternal() {
-        console.log("atualizado o carrinho");
         var cartProducts: ProductModel[] = JSON.parse(localStorage.getItem(this.DEFAULT_CART_LOCAL_STORAGE_NAME) ?? "[]");
         if (!cartProducts || cartProducts.length < 1) {
             this.cartProducts = [];
