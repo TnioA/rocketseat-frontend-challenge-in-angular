@@ -15,6 +15,7 @@ import { ProductItemComponent } from './components/product-item/product-item.com
 
 import ptBr from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
+import { LoadingComponent } from './components/loading/loading.component';
 
 registerLocaleData(ptBr);
 
@@ -27,7 +28,8 @@ registerLocaleData(ptBr);
     BackButtonComponent,
     HeaderComponent,
     PaginationComponent,
-    ProductItemComponent
+    ProductItemComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

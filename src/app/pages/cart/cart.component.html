@@ -6,7 +6,7 @@
                 <div class="cart-products">
                     <div class="cart-products-top">
                         <h3>SEU CARRINHO</h3>
-                        <p>Total {{cartValues[0]}} produtos <strong>{{cartValues[1] | currency}}</strong></p>
+                        <p>Total {{cartService.getTotalInfoCart()[0]}} produtos <strong>{{cartService.getTotalInfoCart()[1] | currency}}</strong></p>
                     </div>
                     <div class="cart-product-list" *ngFor="let product of cartProducts">
                         <div class="cart-product" key={product.id}>
@@ -48,7 +48,7 @@
                             <div class="resume-values">
                                 <div class="resume-line">
                                     <p>Subtotal de produtos</p>
-                                    <p>{{cartValues[1] | currency}}</p>
+                                    <p>{{cartService.getTotalInfoCart()[1] | currency}}</p>
                                 </div>
                                 <div class="resume-line">
                                     <p>Entrega</p>
@@ -58,7 +58,7 @@
                             <hr />
                             <div class="total-value">
                                 <p>Total</p>
-                                <p>{{(cartValues[1] + 40) | currency}}</p>
+                                <p>{{(cartService.getTotalInfoCart()[1] + 40) | currency}}</p>
                             </div>
                             <button type="button">FINALIZAR COMPRA</button>
                         </div>

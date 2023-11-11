@@ -1,3 +1,8 @@
+
+json-server --watch db.json --delay 1000 --host 0.0.0.0
+
+ng serve --host 0.0.0.0
+
 # RocketseatFrontendChallenge
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.8.

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductModel } from 'src/app/models/product';
 import { ApiService } from 'src/app/services/api.service';
+import { LoadingService } from 'src/app/services/loading.service';
 
 @Component({
   selector: 'app-home',
@@ -19,9 +20,13 @@ export class HomeComponent implements OnInit {
   public pageParam!: string;
   public totalCount!: number;
 
-  public products: ProductModel[] = [];
+  public products: ProductModel[] | null = [];
 
-  constructor(private apiService: ApiService, private route: ActivatedRoute) {
+  constructor(
+    private apiService: ApiService, 
+    private route: ActivatedRoute, 
+    private loadingService: LoadingService
+  ) {
     this.route.queryParams.subscribe(params => {
       this.categoryParam = params['category'];
       this.nameParam = params['name'];
@@ -30,12 +35,18 @@ export class HomeComponent implements OnInit {
   }
 
   async ngOnInit() {
+    this.loadingService.show();
+    this.products = [];
     var result = await this.apiService.GetAllByFilter(this.categoryParam, this.nameParam, Number(this.pageParam ?? "1"), this.PRODUCT_LIMIT_FOR_PAGE);
-    if (!result.success)
+    if (!result.success || !result.data?.products || result.data.products.length === 0) {
+      this.loadingService.hide();
+      this.products = null;
       return;
+    }
 
     this.products = result.data.products;
     this.totalCount = result.data.totalCount;
+    this.loadingService.hide();
   }
 
   toInt(value: string) {

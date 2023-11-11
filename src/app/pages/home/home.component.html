@@ -62,16 +62,16 @@
                 </div>
             </div>
 
-            <app-pagination [pageParam]="toInt(pageParam)" [totalCount]="totalCount" *ngIf="products.length > 0" />
+            <app-pagination [pageParam]="toInt(pageParam)" [totalCount]="totalCount" *ngIf="products && products.length > 0" />
             <div class="product-list">
                 <app-product-item class="product-item"
                     *ngFor="let product of products; let i = index" 
                     [product]="product">
                 </app-product-item>
             </div>
-            <app-pagination [pageParam]="toInt(pageParam)" [totalCount]="totalCount" *ngIf="products.length > 0" />
+            <app-pagination [pageParam]="toInt(pageParam)" [totalCount]="totalCount" *ngIf="products && products.length > 0" />
 
-            <div class="empty-list" *ngIf="products.length === 0">
+            <div class="empty-list" *ngIf="!products">
                 <div class="empty-list-icon">
                     <img src="assets/sadFace.svg">
                 </div>

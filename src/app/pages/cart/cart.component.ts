@@ -9,9 +9,9 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class CartComponent implements OnInit {
   public cartProducts: ProductModel[] = [];
-  public cartValues: number[] = [0, 0];
 
-  constructor(private cartService: CartService) { }
+
+  constructor(public cartService: CartService) { }
 
   ngOnInit(): void {
     this.updateCartInfo();
@@ -19,8 +19,6 @@ export class CartComponent implements OnInit {
 
   updateCartInfo() {
     this.cartProducts = this.cartService.get();
-    const values = this.cartService.getTotalInfoCart();
-    this.cartValues = values;
   }
 
   removeProduct(id: number) {
