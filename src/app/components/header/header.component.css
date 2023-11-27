@@ -5,6 +5,7 @@ header {
     height: 80px;
     background: #FFFFFF;
     justify-content: center;
+    z-index: 100;
 }
 
 header .content {
